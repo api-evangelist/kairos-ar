@@ -1,0 +1,28 @@
+generated: '2026-07-19'
+method: searched
+source: openapi/kairos-ar-openapi.yml
+docs: https://face.kairos.com/docs/api/
+notes: >-
+  Every request must send two apiKey headers together — app_id and app_key.
+  Keys are created and managed from the developer dashboard at
+  https://developer.kairos.com. There is no OAuth surface and no scopes.
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: app_id
+  type: apiKey
+  in: header
+  parameter: app_id
+  description: Your Kairos APP_ID, from https://developer.kairos.com.
+  sources:
+  - openapi/kairos-ar-openapi.yml
+- name: app_key
+  type: apiKey
+  in: header
+  parameter: app_key
+  description: Your Kairos APP_KEY, from https://developer.kairos.com.
+  sources:
+  - openapi/kairos-ar-openapi.yml
