@@ -1,0 +1,224 @@
+openapi: 3.0.3
+info:
+  title: Kairos Face Recognition & Emotion Analysis API
+  version: '2.0'
+  description: Kairos is a human-analytics platform that integrates facial recognition, emotion, and demographic data into apps and services over a REST-style API. The Face Recognition group enrolls, verifies, recognizes and detects faces against galleries you create; the Emotion Analysis group processes media (images/video) and returns the six universal emotions, demographics and attention tracking. Requests and responses are JSON; every request is authenticated with an app_id + app_key header pair.
+  contact:
+    name: Kairos Support
+    url: https://www.kairos.com/support
+    email: support@kairos.com
+  x-apievangelist-generated: true
+  x-apievangelist-source: https://kairos.docs.apiary.io/api-description-document
+servers:
+- url: https://api.kairos.com
+  description: Kairos production API
+security:
+- app_id: []
+  app_key: []
+tags:
+- name: Emotion Analysis
+  description: Analyze emotion, demographics and attention in images and video.
+paths:
+  /v2/media:
+    post:
+      operationId: createMedia
+      tags:
+      - Emotion Analysis
+      summary: Create a media object for processing
+      description: Create a new media object (image or video) to be processed for emotion, demographics and attention. Provide the media via the source parameter.
+      parameters:
+      - name: source
+        in: query
+        required: true
+        description: The source of the media. URL or file upload.
+        schema:
+          type: string
+      - name: landmarks
+        in: query
+        required: false
+        description: Set to 1 to receive facial feature points in the response.
+        schema:
+          type: integer
+          default: 0
+      - name: timeout
+        in: query
+        required: false
+        description: Seconds to wait for processing. Default 10, max 60.
+        schema:
+          type: integer
+          default: 10
+          maximum: 60
+      responses:
+        '200':
+          description: Media processed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MediaResult'
+        '202':
+          description: Media accepted and still processing.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MediaProcessing'
+  /v2/media/{id}:
+    get:
+      operationId: getMedia
+      tags:
+      - Emotion Analysis
+      summary: Get processed media results
+      description: Returns the results of a specific uploaded piece of media.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The id of the media.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Media results (or a media-not-found status object).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MediaResult'
+    delete:
+      operationId: deleteMedia
+      tags:
+      - Emotion Analysis
+      summary: Delete media results
+      description: Deletes media results and returns the status of the operation.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The id of the media.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Deletion status.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MediaStatus'
+  /v2/analytics/{id}:
+    get:
+      operationId: getAnalytics
+      tags:
+      - Emotion Analysis
+      summary: Get overall impressions for media
+      description: Returns the overall impressions from a specific uploaded piece of media.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The id of the media.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Aggregated impressions for the media (or a not-found status).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Analytics'
+components:
+  schemas:
+    MediaResult:
+      type: object
+      properties:
+        id:
+          type: string
+        length:
+          type: integer
+        status_code:
+          type: integer
+        status_message:
+          type: string
+        media_info:
+          type: object
+          properties:
+            file:
+              type: string
+            length:
+              type: integer
+            mime_type:
+              type: string
+            type:
+              type: string
+        frames:
+          type: array
+          items:
+            type: object
+            properties:
+              time:
+                type: integer
+              people:
+                type: array
+                items:
+                  type: object
+    Analytics:
+      type: object
+      properties:
+        id:
+          type: string
+        impressions:
+          type: array
+          items:
+            type: object
+            properties:
+              appearance:
+                type: object
+              average_emotion:
+                type: object
+              demographics:
+                type: object
+              duration:
+                type: integer
+              emotion_score:
+                type: object
+              id:
+                type: string
+              tracking:
+                type: object
+        media_info:
+          type: object
+          properties:
+            filename:
+              type: string
+            length:
+              type: integer
+            mime_type:
+              type: string
+            type:
+              type: string
+    MediaProcessing:
+      type: object
+      properties:
+        status_code:
+          type: integer
+        id:
+          type: string
+        status_message:
+          type: string
+    MediaStatus:
+      type: object
+      properties:
+        id:
+          type: string
+        status_code:
+          type: string
+        status_message:
+          type: string
+  securitySchemes:
+    app_id:
+      type: apiKey
+      in: header
+      name: app_id
+      description: Your Kairos APP_ID, from https://developer.kairos.com.
+    app_key:
+      type: apiKey
+      in: header
+      name: app_key
+      description: Your Kairos APP_KEY, from https://developer.kairos.com.

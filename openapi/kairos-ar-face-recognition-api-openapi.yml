@@ -1,0 +1,369 @@
+openapi: 3.0.3
+info:
+  title: Kairos & Emotion Analysis Face Recognition API
+  version: '2.0'
+  description: Kairos is a human-analytics platform that integrates facial recognition, emotion, and demographic data into apps and services over a REST-style API. The Face Recognition group enrolls, verifies, recognizes and detects faces against galleries you create; the Emotion Analysis group processes media (images/video) and returns the six universal emotions, demographics and attention tracking. Requests and responses are JSON; every request is authenticated with an app_id + app_key header pair.
+  contact:
+    name: Kairos Support
+    url: https://www.kairos.com/support
+    email: support@kairos.com
+  x-apievangelist-generated: true
+  x-apievangelist-source: https://kairos.docs.apiary.io/api-description-document
+servers:
+- url: https://api.kairos.com
+  description: Kairos production API
+security:
+- app_id: []
+  app_key: []
+tags:
+- name: Face Recognition
+  description: Detect, enroll, verify and recognize faces in photos against galleries.
+paths:
+  /enroll:
+    post:
+      operationId: enroll
+      tags:
+      - Face Recognition
+      summary: Enroll a face into a gallery
+      description: Takes a photo, finds the faces within it, and stores the faces into a gallery under a subject identifier you choose. Submit the photo as a publicly accessible URL, Base64-encoded image, or file upload.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnrollRequest'
+      responses:
+        '200':
+          description: Face enrolled (or an error envelope with HTTP 200).
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/EnrollResult'
+                - $ref: '#/components/schemas/ErrorEnvelope'
+  /verify:
+    post:
+      operationId: verify
+      tags:
+      - Face Recognition
+      summary: Verify a face against an enrolled subject
+      description: Takes a photo and compares it against a specific subject already enrolled in a gallery. Use the returned confidence value to decide whether the match is valid for your application.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VerifyRequest'
+      responses:
+        '200':
+          description: Verification result (or an error envelope with HTTP 200).
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/RecognitionResult'
+                - $ref: '#/components/schemas/ErrorEnvelope'
+  /recognize:
+    post:
+      operationId: recognize
+      tags:
+      - Face Recognition
+      summary: Recognize faces against a gallery
+      description: Takes a photo, finds the faces within it, and matches them against all subjects enrolled in a gallery, returning candidate matches above the matching threshold (default 60%).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecognizeRequest'
+      responses:
+        '200':
+          description: Recognition result with candidates (or an error envelope).
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/RecognitionResult'
+                - $ref: '#/components/schemas/ErrorEnvelope'
+  /detect:
+    post:
+      operationId: detect
+      tags:
+      - Face Recognition
+      summary: Detect faces and facial features
+      description: Takes a photo and returns the facial features it finds as coordinates, plus attributes such as age, gender and glasses. Coordinates begin at the top-left of the photo.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DetectRequest'
+      responses:
+        '200':
+          description: Detection result (or an error envelope with HTTP 200).
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/DetectResult'
+                - $ref: '#/components/schemas/ErrorEnvelope'
+components:
+  schemas:
+    ErrorEnvelope:
+      type: object
+      description: Kairos error envelope, returned (typically with HTTP 200) on failure.
+      properties:
+        Errors:
+          type: array
+          items:
+            type: object
+            properties:
+              Message:
+                type: string
+                example: no faces found in the image
+              ErrCode:
+                type: integer
+                example: 5002
+    Transaction:
+      type: object
+      properties:
+        status:
+          type: string
+        topLeftX:
+          type: integer
+        topLeftY:
+          type: integer
+        gallery_name:
+          type: string
+        timestamp:
+          type: string
+        height:
+          type: integer
+        width:
+          type: integer
+        quality:
+          type: number
+          format: float
+        confidence:
+          type: number
+          format: float
+        subject_id:
+          type: string
+        face_id:
+          type: integer
+    RecognizeRequest:
+      type: object
+      required:
+      - image
+      - gallery_name
+      properties:
+        image:
+          type: string
+        gallery_name:
+          type: string
+        minHeadScale:
+          type: number
+          format: float
+          default: 0.015
+        threshold:
+          type: number
+          format: float
+          default: 0.7
+          description: Similarity threshold for a valid match (0 to 1).
+        max_num_results:
+          type: integer
+          default: 10
+          description: Maximum number of candidate matches returned.
+    Candidate:
+      type: object
+      properties:
+        subject_id:
+          type: string
+        confidence:
+          type: number
+          format: float
+        enrollment_timestamp:
+          type: string
+    RecognitionResult:
+      type: object
+      properties:
+        images:
+          type: array
+          items:
+            type: object
+            properties:
+              transaction:
+                $ref: '#/components/schemas/Transaction'
+              candidates:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Candidate'
+    EnrollResult:
+      type: object
+      properties:
+        face_id:
+          type: string
+        images:
+          type: array
+          items:
+            type: object
+            properties:
+              attributes:
+                $ref: '#/components/schemas/FaceAttributes'
+              transaction:
+                $ref: '#/components/schemas/Transaction'
+    DetectResult:
+      type: object
+      properties:
+        images:
+          type: array
+          items:
+            type: object
+            properties:
+              status:
+                type: string
+              width:
+                type: integer
+              height:
+                type: integer
+              file:
+                type: string
+              faces:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    topLeftX:
+                      type: integer
+                    topLeftY:
+                      type: integer
+                    chinTipX:
+                      type: integer
+                    chinTipY:
+                      type: integer
+                    rightEyeCenterX:
+                      type: integer
+                    rightEyeCenterY:
+                      type: integer
+                    leftEyeCenterX:
+                      type: integer
+                    leftEyeCenterY:
+                      type: integer
+                    yaw:
+                      type: integer
+                    pitch:
+                      type: integer
+                    roll:
+                      type: integer
+                    confidence:
+                      type: number
+                      format: float
+                    height:
+                      type: integer
+                    width:
+                      type: integer
+                    quality:
+                      type: number
+                      format: float
+                    face_id:
+                      type: integer
+                    attributes:
+                      $ref: '#/components/schemas/FaceAttributes'
+    DetectRequest:
+      type: object
+      required:
+      - image
+      properties:
+        image:
+          type: string
+        minHeadScale:
+          type: number
+          format: float
+          default: 0.015
+        selector:
+          type: string
+          default: FRONTAL
+          enum:
+          - FRONTAL
+          - FULL
+          - PARTIAL
+          - ROLL
+          description: Face detector orientation profile.
+    FaceAttributes:
+      type: object
+      properties:
+        lips:
+          type: string
+        asian:
+          type: number
+          format: float
+        gender:
+          type: object
+          properties:
+            type:
+              type: string
+        age:
+          type: integer
+        hispanic:
+          type: number
+          format: float
+        other:
+          type: number
+          format: float
+        black:
+          type: number
+          format: float
+        white:
+          type: number
+          format: float
+        glasses:
+          type: string
+    VerifyRequest:
+      type: object
+      required:
+      - image
+      - subject_id
+      - gallery_name
+      properties:
+        image:
+          type: string
+        subject_id:
+          type: string
+        gallery_name:
+          type: string
+    EnrollRequest:
+      type: object
+      required:
+      - image
+      - subject_id
+      - gallery_name
+      properties:
+        image:
+          type: string
+          description: Publicly accessible URL, file upload or Base64-encoded photo.
+        subject_id:
+          type: string
+          description: Identifier for the face, defined by you.
+        gallery_name:
+          type: string
+          description: Gallery to store the face in, defined by you.
+        minHeadScale:
+          type: number
+          format: float
+          default: 0.015
+          description: Ratio of the smallest face to look for (0.015 to 0.5).
+        multiple_faces:
+          type: boolean
+          default: false
+          description: Enroll every detected face under the same subject_id.
+  securitySchemes:
+    app_id:
+      type: apiKey
+      in: header
+      name: app_id
+      description: Your Kairos APP_ID, from https://developer.kairos.com.
+    app_key:
+      type: apiKey
+      in: header
+      name: app_key
+      description: Your Kairos APP_KEY, from https://developer.kairos.com.

@@ -1,0 +1,220 @@
+openapi: 3.0.3
+info:
+  title: Kairos Face Recognition & Emotion Analysis Galleries API
+  version: '2.0'
+  description: Kairos is a human-analytics platform that integrates facial recognition, emotion, and demographic data into apps and services over a REST-style API. The Face Recognition group enrolls, verifies, recognizes and detects faces against galleries you create; the Emotion Analysis group processes media (images/video) and returns the six universal emotions, demographics and attention tracking. Requests and responses are JSON; every request is authenticated with an app_id + app_key header pair.
+  contact:
+    name: Kairos Support
+    url: https://www.kairos.com/support
+    email: support@kairos.com
+  x-apievangelist-generated: true
+  x-apievangelist-source: https://kairos.docs.apiary.io/api-description-document
+servers:
+- url: https://api.kairos.com
+  description: Kairos production API
+security:
+- app_id: []
+  app_key: []
+tags:
+- name: Galleries
+  description: Manage galleries and the subjects/face templates enrolled in them.
+paths:
+  /gallery/list_all:
+    post:
+      operationId: listGalleries
+      tags:
+      - Galleries
+      summary: List all galleries
+      description: Lists all of the galleries you have created. Requires no parameters.
+      responses:
+        '200':
+          description: List of gallery ids.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GalleryList'
+  /gallery/view:
+    post:
+      operationId: viewGallery
+      tags:
+      - Galleries
+      summary: View subjects in a gallery
+      description: Lists all of the subjects you have enrolled in a gallery.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GalleryNameRequest'
+      responses:
+        '200':
+          description: List of subject ids (or an error envelope).
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/SubjectList'
+                - $ref: '#/components/schemas/ErrorEnvelope'
+  /gallery/view_subject:
+    post:
+      operationId: viewSubject
+      tags:
+      - Galleries
+      summary: View face templates for a subject
+      description: Displays all face_ids and enrollment timestamps for each template enrolled from a given gallery_name and subject_id.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubjectRequest'
+      responses:
+        '200':
+          description: List of face templates (or an error envelope).
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/FaceTemplateList'
+                - $ref: '#/components/schemas/ErrorEnvelope'
+  /gallery/remove:
+    post:
+      operationId: removeGallery
+      tags:
+      - Galleries
+      summary: Remove a gallery
+      description: Removes a gallery and all of its enrolled subjects.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GalleryNameRequest'
+      responses:
+        '200':
+          description: Removal status (or an error envelope).
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/StatusMessage'
+                - $ref: '#/components/schemas/ErrorEnvelope'
+  /gallery/remove_subject:
+    post:
+      operationId: removeSubject
+      tags:
+      - Galleries
+      summary: Remove a subject or face template
+      description: Removes a subject from a gallery. If a face_id is supplied only that individual enrolled template is removed. Once the last subject is removed the gallery is removed automatically.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RemoveSubjectRequest'
+      responses:
+        '200':
+          description: Removal status (or an error envelope).
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/StatusMessage'
+                - $ref: '#/components/schemas/ErrorEnvelope'
+components:
+  schemas:
+    ErrorEnvelope:
+      type: object
+      description: Kairos error envelope, returned (typically with HTTP 200) on failure.
+      properties:
+        Errors:
+          type: array
+          items:
+            type: object
+            properties:
+              Message:
+                type: string
+                example: no faces found in the image
+              ErrCode:
+                type: integer
+                example: 5002
+    RemoveSubjectRequest:
+      type: object
+      required:
+      - gallery_name
+      - subject_id
+      properties:
+        gallery_name:
+          type: string
+        subject_id:
+          type: string
+        face_id:
+          type: string
+          description: Optional. Remove only the individual template matching this face_id.
+    SubjectList:
+      type: object
+      properties:
+        status:
+          type: string
+        subject_ids:
+          type: array
+          items:
+            type: string
+    FaceTemplateList:
+      type: object
+      properties:
+        status:
+          type: string
+        face_ids:
+          type: array
+          items:
+            type: object
+            properties:
+              face_id:
+                type: string
+              enrollment_timestamp:
+                type: string
+    GalleryNameRequest:
+      type: object
+      required:
+      - gallery_name
+      properties:
+        gallery_name:
+          type: string
+    StatusMessage:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+    GalleryList:
+      type: object
+      properties:
+        status:
+          type: string
+        gallery_ids:
+          type: array
+          items:
+            type: string
+    SubjectRequest:
+      type: object
+      required:
+      - gallery_name
+      - subject_id
+      properties:
+        gallery_name:
+          type: string
+        subject_id:
+          type: string
+  securitySchemes:
+    app_id:
+      type: apiKey
+      in: header
+      name: app_id
+      description: Your Kairos APP_ID, from https://developer.kairos.com.
+    app_key:
+      type: apiKey
+      in: header
+      name: app_key
+      description: Your Kairos APP_KEY, from https://developer.kairos.com.
