@@ -1,0 +1,52 @@
+generated: '2026-07-19'
+method: derived
+status: candidate
+source: openapi/kairos-ar-openapi.yml
+notes: >-
+  No official hosted/remote Kairos MCP server was found (no entry in the MCP
+  registry, no @modelcontextprotocol package, nothing in the kairosinc GitHub
+  org). This is a candidate tool list derived one-to-one from the OpenAPI
+  operations to seed an MCP server.
+server:
+  name: kairos-ar
+  transport: http
+tools:
+- name: enroll
+  description: Enroll a face into a gallery under a subject_id.
+  source_operation: openapi/kairos-ar-openapi.yml#enroll
+- name: verify
+  description: Verify a photo against an enrolled subject.
+  source_operation: openapi/kairos-ar-openapi.yml#verify
+- name: recognize
+  description: Recognize faces in a photo against a gallery.
+  source_operation: openapi/kairos-ar-openapi.yml#recognize
+- name: detect
+  description: Detect faces and facial features in a photo.
+  source_operation: openapi/kairos-ar-openapi.yml#detect
+- name: listGalleries
+  description: List all galleries you have created.
+  source_operation: openapi/kairos-ar-openapi.yml#listGalleries
+- name: viewGallery
+  description: List subjects enrolled in a gallery.
+  source_operation: openapi/kairos-ar-openapi.yml#viewGallery
+- name: viewSubject
+  description: List face templates for a subject.
+  source_operation: openapi/kairos-ar-openapi.yml#viewSubject
+- name: removeGallery
+  description: Remove a gallery and all its subjects.
+  source_operation: openapi/kairos-ar-openapi.yml#removeGallery
+- name: removeSubject
+  description: Remove a subject or a single face template.
+  source_operation: openapi/kairos-ar-openapi.yml#removeSubject
+- name: createMedia
+  description: Create a media object for emotion analysis.
+  source_operation: openapi/kairos-ar-openapi.yml#createMedia
+- name: getMedia
+  description: Get processed emotion-analysis results for a media object.
+  source_operation: openapi/kairos-ar-openapi.yml#getMedia
+- name: deleteMedia
+  description: Delete emotion-analysis media results.
+  source_operation: openapi/kairos-ar-openapi.yml#deleteMedia
+- name: getAnalytics
+  description: Get aggregated impressions for a media object.
+  source_operation: openapi/kairos-ar-openapi.yml#getAnalytics

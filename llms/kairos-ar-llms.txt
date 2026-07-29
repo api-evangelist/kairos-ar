@@ -1,0 +1,39 @@
+# Kairos AR
+
+> Kairos AR, Inc. is a human-analytics company providing face recognition, facial detection, and emotion analysis as a REST API. Enroll, verify, and recognize faces against galleries you create; detect faces and facial attributes (age, gender, ethnicity, glasses, landmarks); and analyze emotion, demographics, and attention across images and video. JSON in/out, authenticated with an app_id + app_key header pair.
+
+## APIs
+
+- [Kairos Face Recognition & Emotion Analysis API](https://face.kairos.com/docs/api/): REST API over https://api.kairos.com — enroll, verify, recognize, detect, gallery management, and /v2 emotion analysis.
+
+## Specs
+
+- [OpenAPI 3.0 (API Evangelist generated)](https://raw.githubusercontent.com/api-evangelist/kairos-ar/refs/heads/main/openapi/kairos-ar-openapi.yml)
+- [API Blueprint (provider, verbatim)](https://raw.githubusercontent.com/api-evangelist/kairos-ar/refs/heads/main/openapi/kairos-ar-blueprint-original.apib)
+
+## Docs
+
+- [API Reference](https://face.kairos.com/docs/api/)
+- [Documentation & Guides](https://face.kairos.com/docs/)
+- [Getting Started](https://face.kairos.com/docs/getting-started-with-kairos-face-recognition)
+- [Error Codes](https://face.kairos.com/docs/api/error-codes)
+- [Changelog](https://face.kairos.com/docs/api/changelog)
+- [Interactive Sandbox (Apiary)](https://kairos.docs.apiary.io/)
+- [Developer Dashboard](https://developer.kairos.com)
+
+## Artifacts
+
+- [Authentication](https://raw.githubusercontent.com/api-evangelist/kairos-ar/refs/heads/main/authentication/kairos-ar-authentication.yml)
+- [Error catalog](https://raw.githubusercontent.com/api-evangelist/kairos-ar/refs/heads/main/errors/kairos-ar-error-codes.yml)
+- [Conventions](https://raw.githubusercontent.com/api-evangelist/kairos-ar/refs/heads/main/conventions/kairos-ar-conventions.yml)
+- [Data model](https://raw.githubusercontent.com/api-evangelist/kairos-ar/refs/heads/main/data-model/kairos-ar-data-model.yml)
+- [Packages / SDKs](https://raw.githubusercontent.com/api-evangelist/kairos-ar/refs/heads/main/packages/kairos-ar-packages.yml)
+- [Sandbox / test data](https://raw.githubusercontent.com/api-evangelist/kairos-ar/refs/heads/main/sandbox/kairos-ar-sandbox.yml)
+
+## Account
+
+- [Pricing](https://www.kairos.com/pricing)
+- [Sign Up](https://developer.kairos.com/signup)
+- [Support](https://www.kairos.com/support)
+- [Status](https://status.kairos.com/)
+- [GitHub](https://github.com/kairosinc)

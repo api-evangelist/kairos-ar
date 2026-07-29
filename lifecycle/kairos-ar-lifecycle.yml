@@ -1,0 +1,18 @@
+generated: '2026-07-19'
+method: searched
+source: https://face.kairos.com/docs/api/changelog
+versioning:
+  scheme: mixed
+  face_recognition: unversioned paths (/enroll, /verify, /recognize, /detect, /gallery/*)
+  emotion_analysis: path-versioned under /v2/
+  current: v2 (Emotion Analysis)
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: No formal deprecation policy or RFC 8594 Sunset/Deprecation header support is documented.
+sla:
+  url: null
+  uptime_target: null
+status_page: https://status.kairos.com/
+changelog: https://face.kairos.com/docs/api/changelog
+deprecated_operations: []

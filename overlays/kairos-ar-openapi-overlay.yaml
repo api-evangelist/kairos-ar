@@ -1,0 +1,33 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Kairos Face Recognition & Emotion Analysis API
+  version: 1.0.0
+extends: openapi/kairos-ar-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-enriched: true
+    x-apievangelist-source: https://kairos.docs.apiary.io/api-description-document
+    x-apievangelist-artifacts:
+      authentication: authentication/kairos-ar-authentication.yml
+      errors: errors/kairos-ar-error-codes.yml
+      conventions: conventions/kairos-ar-conventions.yml
+      data-model: data-model/kairos-ar-data-model.yml
+      sandbox: sandbox/kairos-ar-sandbox.yml
+- target: $.info
+  update:
+    x-apievangelist-categories:
+    - face recognition
+    - biometrics
+    - emotion analysis
+    - computer vision
+- target: "$.paths['/enroll'].post"
+  update:
+    x-agentic-consequence: physical
+    x-agentic-note: >-
+      Enrolls biometric templates of a person; treat as a consequential write
+      requiring consent and audit.
+- target: "$.paths['/recognize'].post"
+  update:
+    x-agentic-consequence: physical
+    x-agentic-note: Biometric identification against a gallery; consequential read/match.

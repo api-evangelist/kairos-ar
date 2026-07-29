@@ -1,0 +1,83 @@
+generated: '2026-07-19'
+method: searched
+source: https://github.com/kairosinc
+notes: >-
+  Kairos distributes its official client libraries as source on the kairosinc
+  GitHub organization rather than via language package registries (npm, PyPI,
+  Packagist, NuGet). Face Recognition SDKs and Emotion Analysis SDKs are
+  separate libraries. Third-party community wrappers also exist and are marked
+  official: false.
+packages:
+- language: javascript
+  registry: github
+  name: Kairos-SDK-Javascript
+  url: https://github.com/kairosinc/Kairos-SDK-Javascript
+  install: "include kairos.js in your project (MIT)"
+  official: true
+  product: Face Recognition
+- language: php
+  registry: github
+  name: Kairos-SDK-PHP
+  url: https://github.com/kairosinc/Kairos-SDK-PHP
+  official: true
+  product: Face Recognition
+- language: java
+  registry: github
+  name: Kairos-SDK-Android
+  url: https://github.com/kairosinc/Kairos-SDK-Android
+  official: true
+  product: Face Recognition
+- language: csharp
+  registry: github
+  name: Kairos.Net
+  url: https://github.com/kairosinc/Kairos.Net
+  official: true
+  product: Face Recognition
+- language: nodejs
+  registry: github
+  name: kairos-emotion-sdk-nodejs
+  url: https://github.com/kairosinc/kairos-emotion-sdk-nodejs
+  official: true
+  product: Emotion Analysis
+- language: php
+  registry: github
+  name: kairos-emotion-sdk-php
+  url: https://github.com/kairosinc/kairos-emotion-sdk-php
+  official: true
+  product: Emotion Analysis
+- language: csharp
+  registry: github
+  name: kairos-emotion-sdk-csharp
+  url: https://github.com/kairosinc/kairos-emotion-sdk-csharp
+  official: true
+  product: Emotion Analysis
+- language: python
+  registry: github
+  name: kairos-emotion-sdk-python
+  url: https://github.com/kairosinc/kairos-emotion-sdk-python
+  official: true
+  product: Emotion Analysis
+- language: ruby
+  registry: github
+  name: kairos-emotion-sdk-ruby
+  url: https://github.com/kairosinc/kairos-emotion-sdk-ruby
+  official: true
+  product: Emotion Analysis
+- language: go
+  registry: github
+  name: kairos-emotion-sdk-go
+  url: https://github.com/kairosinc/kairos-emotion-sdk-go
+  official: true
+  product: Emotion Analysis
+- language: python
+  registry: github
+  name: kairos-face-sdk-python
+  url: https://github.com/ffmmjj/kairos-face-sdk-python
+  official: false
+  product: Face Recognition
+- language: nodejs
+  registry: github
+  name: node-kairos-api
+  url: https://github.com/jhen0409/node-kairos-api
+  official: false
+  product: Face Recognition

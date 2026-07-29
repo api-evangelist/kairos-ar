@@ -1,0 +1,51 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/kairos-ar-openapi.yml
+notes: >-
+  Entity graph derived from the OpenAPI operations and their request/response
+  shapes. Galleries are containers you create; each holds Subjects (identified
+  by subject_id); each Subject holds one or more enrolled Face Templates
+  (identified by face_id). The Emotion Analysis side is a separate object graph
+  rooted at Media.
+entities:
+- name: Gallery
+  key: gallery_name
+  description: A named container of enrolled subjects that you create.
+  relationships:
+  - has_many: Subject
+    via: gallery_name
+- name: Subject
+  key: subject_id
+  description: A person/identity enrolled in a gallery.
+  relationships:
+  - belongs_to: Gallery
+    via: gallery_name
+  - has_many: FaceTemplate
+    via: subject_id
+- name: FaceTemplate
+  key: face_id
+  description: An individual enrolled face template with attributes and an enrollment timestamp.
+  relationships:
+  - belongs_to: Subject
+    via: subject_id
+- name: Media
+  key: id
+  description: An uploaded image or video processed by Emotion Analysis.
+  relationships:
+  - has_many: Frame
+    via: id
+  - has_one: Analytics
+    via: id
+- name: Frame
+  description: A single analyzed time slice of a media object.
+  relationships:
+  - has_many: Person
+    via: frame
+- name: Person
+  key: person_id
+  description: A detected person within a frame with emotions, demographics and tracking.
+- name: Analytics
+  description: Aggregated impressions (average emotion, demographics, attention) for a media object.
+  relationships:
+  - belongs_to: Media
+    via: id

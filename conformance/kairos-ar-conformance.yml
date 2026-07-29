@@ -1,0 +1,27 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/kairos-ar-openapi.yml
+standards:
+- id: openapi-3.0
+  conforms: true
+  evidence: OpenAPI 3.0.3 description generated from the published API Blueprint.
+- id: apikey-auth
+  conforms: true
+  evidence: securitySchemes declare two apiKey header schemes (app_id, app_key).
+- id: oauth2
+  conforms: false
+- id: openid-connect
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: "Errors use a custom { Errors: [ { Message, ErrCode } ] } envelope, not application/problem+json."
+- id: rfc8594-sunset
+  conforms: false
+- id: json-api
+  conforms: false
+- id: cursor-pagination
+  conforms: false
+  evidence: List endpoints return full arrays with no pagination.
+- id: rest-json
+  conforms: true
+  evidence: JSON request/response over HTTPS with resource-style endpoints.

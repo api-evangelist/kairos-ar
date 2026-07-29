@@ -1,25 +1,181 @@
 aid: kairos-ar
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/kairos-ar.png
 name: Kairos AR
-description: Kairos AR is a company surfaced as a portfolio company of 500-global and added to the API
-  Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Kairos AR, Inc. is a Miami-based human-analytics company providing face
+  recognition, facial detection, and emotion analysis as a REST API. The
+  platform lets developers enroll, verify, and recognize faces against galleries
+  they create, detect faces and facial features (age, gender, ethnicity,
+  glasses, landmarks) in photos, and analyze emotion, demographics and attention
+  across images and video. Requests and responses are JSON and every call is
+  authenticated with an app_id + app_key header pair. Kairos ships official SDKs
+  for JavaScript, PHP, Android, and .NET, publishes an Apiary-hosted API
+  reference with a live sandbox console, and offers a free tier plus usage-based
+  pricing and an on-premise biometric offering. The company was surfaced as a
+  500 Global portfolio company and is enriched here into the API Evangelist
+  network.
 url: https://raw.githubusercontent.com/api-evangelist/kairos-ar/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - 500-global
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profiled
+x-tier-reason: enriched-from-public-docs
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
-apis: []
+- Face Recognition
+- Facial Recognition
+- Biometrics
+- Emotion Analysis
+- Computer Vision
+- Identity
+- Artificial Intelligence
+- Machine Learning
+- Image Analysis
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- aid: kairos-ar:kairos-ar-emotion-analysis-api
+  name: Kairos AR Emotion Analysis API
+  description: Analyze emotion, demographics and attention in images and video.
+  humanURL: https://face.kairos.com/docs/api/
+  baseURL: https://api.kairos.com
+  tags:
+  - Emotion Analysis
+  properties:
+  - type: OpenAPI
+    url: openapi/kairos-ar-emotion-analysis-api-openapi.yml
+  - type: APIBlueprint
+    url: openapi/kairos-ar-blueprint-original.apib
+  - type: Authentication
+    url: authentication/kairos-ar-authentication.yml
+  - type: ErrorCatalog
+    url: errors/kairos-ar-error-codes.yml
+  - type: Conventions
+    url: conventions/kairos-ar-conventions.yml
+  - type: DataModel
+    url: data-model/kairos-ar-data-model.yml
+  - type: Conformance
+    url: conformance/kairos-ar-conformance.yml
+  - type: AgenticAccess
+    url: agentic-access/kairos-ar-agentic-access.yml
+- aid: kairos-ar:kairos-ar-face-recognition-api
+  name: Kairos AR Face Recognition API
+  description: Detect, enroll, verify and recognize faces in photos against galleries.
+  humanURL: https://face.kairos.com/docs/api/
+  baseURL: https://api.kairos.com
+  tags:
+  - Face Recognition
+  properties:
+  - type: OpenAPI
+    url: openapi/kairos-ar-face-recognition-api-openapi.yml
+  - type: APIBlueprint
+    url: openapi/kairos-ar-blueprint-original.apib
+  - type: Authentication
+    url: authentication/kairos-ar-authentication.yml
+  - type: ErrorCatalog
+    url: errors/kairos-ar-error-codes.yml
+  - type: Conventions
+    url: conventions/kairos-ar-conventions.yml
+  - type: DataModel
+    url: data-model/kairos-ar-data-model.yml
+  - type: Conformance
+    url: conformance/kairos-ar-conformance.yml
+  - type: AgenticAccess
+    url: agentic-access/kairos-ar-agentic-access.yml
+- aid: kairos-ar:kairos-ar-galleries-api
+  name: Kairos AR Galleries API
+  description: Manage galleries and the subjects/face templates enrolled in them.
+  humanURL: https://face.kairos.com/docs/api/
+  baseURL: https://api.kairos.com
+  tags:
+  - Galleries
+  properties:
+  - type: OpenAPI
+    url: openapi/kairos-ar-galleries-api-openapi.yml
+  - type: APIBlueprint
+    url: openapi/kairos-ar-blueprint-original.apib
+  - type: Authentication
+    url: authentication/kairos-ar-authentication.yml
+  - type: ErrorCatalog
+    url: errors/kairos-ar-error-codes.yml
+  - type: Conventions
+    url: conventions/kairos-ar-conventions.yml
+  - type: DataModel
+    url: data-model/kairos-ar-data-model.yml
+  - type: Conformance
+    url: conformance/kairos-ar-conformance.yml
+  - type: AgenticAccess
+    url: agentic-access/kairos-ar-agentic-access.yml
 common:
 - type: Website
   url: https://kairos.com
+- type: DeveloperPortal
+  url: https://developer.kairos.com
+- type: Documentation
+  url: https://face.kairos.com/docs/
+- type: APIReference
+  url: https://face.kairos.com/docs/api/
+- type: GettingStarted
+  url: https://face.kairos.com/docs/getting-started-with-kairos-face-recognition
+- type: Support
+  url: https://www.kairos.com/support
+- type: Blog
+  url: https://www.kairos.com/blog
+- type: GitHubOrganization
+  url: https://github.com/kairosinc
+- type: Pricing
+  url: https://www.kairos.com/pricing
+- type: SignUp
+  url: https://developer.kairos.com/signup
+- type: TermsOfService
+  url: https://www.kairos.com/terms
+- type: PrivacyPolicy
+  url: https://www.kairos.com/privacy
+- type: StatusPage
+  url: https://status.kairos.com/
+- type: ChangeLog
+  url: https://face.kairos.com/docs/api/changelog
+- type: Postman
+  url: https://documenter.getpostman.com/view/566316/SVYnSMHo
+- type: MCPServer
+  url: mcp/kairos-ar-mcp.yml
+- type: LLMsTxt
+  url: llms/kairos-ar-llms.txt
+- type: Packages
+  url: packages/kairos-ar-packages.yml
+- type: SDKs
+  url: packages/kairos-ar-packages.yml
+- type: Lifecycle
+  url: lifecycle/kairos-ar-lifecycle.yml
+- type: Sandbox
+  url: sandbox/kairos-ar-sandbox.yml
+- type: Changelog
+  url: changelog/kairos-ar-changelog.yml
+- type: DomainSecurity
+  url: security/kairos-ar-domain-security.yml
+- type: AgentSkill
+  url: skills/_index.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

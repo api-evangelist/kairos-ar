@@ -1,0 +1,27 @@
+generated: '2026-07-19'
+method: searched
+source: https://kairos.docs.apiary.io/
+notes: >-
+  Kairos publishes a live interactive API sandbox via its Apiary console, with
+  sample credentials and sample image URLs baked into every request example.
+  These are the provider's published sandbox values (captured verbatim) — real
+  usage requires your own app_id/app_key from https://developer.kairos.com. It
+  is free to sign up; the free Identity Verification tier includes 100 API calls
+  with no credit card required.
+console:
+  provider: Apiary
+  url: https://kairos.docs.apiary.io/
+test_credentials:
+  app_id: "4985f625"
+  app_key: "aa9e5d2ec3b00306b2d9588c3a25d68e"
+  note: Published sandbox sample keys from the Apiary docs; replace with your own during development.
+sample_images:
+  - http://media.kairos.com/kairos-elizabeth.jpg
+  - http://media.kairos.com/kairos-elizabeth2.jpg
+  - http://media.kairos.com/kairos-team1.jpg
+sample_media:
+  - http://media.kairos.com/test.flv
+free_tier:
+  calls: 100
+  credit_card_required: false
+  signup: https://developer.kairos.com/signup

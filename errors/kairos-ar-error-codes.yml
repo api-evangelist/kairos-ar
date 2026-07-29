@@ -1,0 +1,87 @@
+generated: '2026-07-19'
+method: searched
+source: https://face.kairos.com/docs/api/error-codes
+envelope:
+  description: >-
+    Errors are returned as an Errors[] array of objects, each with a human
+    Message and a numeric ErrCode. Most face-recognition errors are returned
+    with an HTTP 200 status; authentication and rate-limit errors use real HTTP
+    status codes. Emotion Analysis (v2) endpoints instead return a flat
+    { code, message } or { status_code, status_message } object.
+  fields:
+    - Errors
+    - Message
+    - ErrCode
+error_codes:
+- code: 1000
+  http: 200
+  message: invalid characters found in parameters
+  remediation: Remove special characters from subject IDs and gallery names.
+- code: 1001
+  http: 200
+  message: invalid content type header was sent
+  remediation: Set the Content-Type header to application/json.
+- code: 1002
+  http: 200
+  message: required parameter missing
+  remediation: Include all required parameters for the endpoint.
+- code: 1003
+  http: 200
+  message: an invalid parameter was sent
+  remediation: Review the API reference for valid parameters.
+- code: 1004
+  http: 200
+  message: remote url or file name is too long
+  remediation: Submit a shorter URL or filename.
+- code: 3000
+  http: 429
+  message: you've exceeded the number of requests you can send
+  remediation: You have hit the rate limit for your subscription plan; slow down or upgrade.
+- code: 3001
+  http: 502
+  message: API temporarily unavailable
+  remediation: Temporary service issue; retry the request later.
+- code: 3002
+  http: 404
+  message: an invalid endpoint was used
+  remediation: Verify the request URL matches a valid API endpoint.
+- code: 3003
+  http: 403
+  message: invalid authentication parameters
+  remediation: Check that app_id and app_key are valid.
+- code: 5000
+  http: 200
+  message: an invalid image was sent, must be jpg or png format
+  remediation: Submit a JPG or PNG image.
+- code: 5001
+  http: 200
+  message: an invalid image URL was sent
+  remediation: Ensure the image URL is publicly accessible.
+- code: 5002
+  http: 200
+  message: no faces found in the image
+  remediation: Submit an image containing a detectable face.
+- code: 5003
+  http: 200
+  message: subject ID was not found
+  remediation: Verify the subject_id exists in the gallery.
+- code: 5004
+  http: 200
+  message: gallery name not found
+  remediation: Verify the gallery_name exists.
+- code: 5005
+  http: 200
+  message: face that was detected is corrupt and cannot be processed
+  remediation: Submit a clearer image of the face.
+- code: 5010
+  http: 200
+  message: too many faces in image
+  remediation: Verify requests accept a single face; submit an image with one face.
+- code: 5011
+  http: 200
+  message: enterprise only feature
+  remediation: This feature requires a Business or Enterprise plan.
+- code: 5012
+  http: 200
+  message: no match found
+  remediation: No candidate matched; lower the threshold or enroll more images.

@@ -1,0 +1,31 @@
+generated: '2026-07-19'
+method: searched
+source: https://face.kairos.com/docs/api/changelog
+scheme: dated
+notes: >-
+  Kairos maintains a dated changelog on its API docs. The most recent published
+  entries are captured below (recent window). Dates are US format (M/D/YY) as
+  published.
+entries:
+- date: '2019-02-20'
+  highlights: Algorithm improvements for face detection and matching accuracy across cloud and on-premise versions.
+- date: '2018-12-15'
+  highlights: Performance enhancements addressing slow response times and elevated error rates.
+- date: '2018-10-15'
+  breaking: false
+  highlights: Complete migration to deep-learning algorithms; on-premise version launched.
+- date: '2018-01-18'
+  additions: [show_uploaded_image, show_candidate_images]
+  highlights: Backend rewritten in Go for consistency and faster responses; corrected face_id return type.
+- date: '2017-06-27'
+  additions: [uploaded_image_url]
+  highlights: uploaded_image_url added to verify, enroll and recognize (valid for one hour).
+- date: '2017-06-16'
+  additions: [eyeDistance]
+  highlights: eyeDistance metric added to multiple methods.
+- date: '2017-05-02'
+  highlights: Accuracy improvements, removal of individual faces from subjects, new gender-confidence metrics.
+- date: '2017-03-30'
+  highlights: Detectors added for lips and glasses.
+- date: '2017-02-20'
+  highlights: Ethnicity detection, quality metrics and form-upload capability introduced.

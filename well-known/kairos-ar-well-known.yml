@@ -1,0 +1,38 @@
+generated: '2026-07-19'
+method: probed
+source: live probes of Kairos hosts
+notes: >-
+  No genuine /.well-known/ discovery documents were found. The API host
+  api.kairos.com returns 403 for every well-known path (it enforces app_id/
+  app_key auth on all paths); www.kairos.com and developer.kairos.com return
+  404; face.kairos.com returns HTTP 200 for /.well-known/security.txt but the
+  body is the Joomla homepage HTML (a soft 404), not a real RFC 9116 file. No
+  WellKnown/SecurityTxt pointer is wired because nothing genuine was published.
+hosts:
+- host: https://api.kairos.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+  - path: /.well-known/openid-configuration
+    status: 403
+  - path: /.well-known/oauth-authorization-server
+    status: 403
+  - path: /.well-known/api-catalog
+    status: 403
+  - path: /.well-known/ai-plugin.json
+    status: 403
+- host: https://www.kairos.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+- host: https://face.kairos.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    note: soft-404 (returns homepage HTML, not a real security.txt)
+- host: https://developer.kairos.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404

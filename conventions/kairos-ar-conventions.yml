@@ -1,0 +1,42 @@
+generated: '2026-07-19'
+method: searched
+source: https://face.kairos.com/docs/api/
+authentication:
+  style: dual-apikey-header
+  headers: [app_id, app_key]
+  scopes: none
+  ref: authentication/kairos-ar-authentication.yml
+content_type:
+  request: application/json
+  response: application/json
+idempotency:
+  supported: false
+  notes: >-
+    No idempotency-key mechanism is documented. Enroll is naturally additive
+    (enrolling the same subject repeatedly adds face templates), so callers must
+    de-duplicate on their own subject_id / gallery_name keys.
+pagination:
+  supported: false
+  notes: >-
+    List operations (gallery/list_all, gallery/view, gallery/view_subject)
+    return full arrays with no cursor or page parameters.
+versioning:
+  scheme: mixed
+  notes: >-
+    Face Recognition endpoints are unversioned paths (/enroll, /verify, ...).
+    Emotion Analysis endpoints are versioned in the path under /v2/.
+error_envelope:
+  face_recognition: "{ Errors: [ { Message, ErrCode } ] } (usually HTTP 200)"
+  emotion_analysis: "{ code, message } or { status_code, status_message }"
+  ref: errors/kairos-ar-error-codes.yml
+rate_limiting:
+  signalled_by: HTTP 429 with ErrCode 3000
+  headers: none documented
+  notes: Limits are per subscription plan; no rate-limit response headers are documented.
+media_input:
+  formats: [jpg, png]
+  submission_modes: [public URL, Base64-encoded, multipart file upload]
+matching:
+  confidence_field: confidence
+  guidance: Confidence values above 60% are almost always the same person.
+  default_threshold: 0.70

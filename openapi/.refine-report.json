@@ -1,0 +1,18 @@
+{
+  "provider": "kairos-ar",
+  "sources": [
+    "kairos-ar-emotion-analysis-api-openapi.yml",
+    "kairos-ar-face-recognition-api-openapi.yml",
+    "kairos-ar-galleries-api-openapi.yml"
+  ],
+  "outputs": [
+    "kairos-ar-emotion-analysis-api-openapi.yml",
+    "kairos-ar-face-recognition-api-openapi.yml",
+    "kairos-ar-galleries-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

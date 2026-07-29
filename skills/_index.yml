@@ -1,0 +1,20 @@
+generated: '2026-07-19'
+method: generated
+source: openapi/kairos-ar-openapi.yml
+skills:
+- file: kairos-ar-enroll-and-recognize.md
+  name: Enroll faces and recognize them against a gallery
+  api: openapi/kairos-ar-openapi.yml
+  operations: [enroll, recognize, viewGallery]
+- file: kairos-ar-verify-identity.md
+  name: Verify a photo against a known subject
+  api: openapi/kairos-ar-openapi.yml
+  operations: [verify]
+- file: kairos-ar-detect-faces.md
+  name: Detect faces and facial attributes in a photo
+  api: openapi/kairos-ar-openapi.yml
+  operations: [detect]
+- file: kairos-ar-emotion-analysis.md
+  name: Analyze emotion and attention in media
+  api: openapi/kairos-ar-openapi.yml
+  operations: [createMedia, getMedia, getAnalytics]
