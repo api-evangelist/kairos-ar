@@ -126,6 +126,8 @@ apis:
   - type: AgenticAccess
     url: agentic-access/kairos-ar-agentic-access.yml
 common:
+- type: Overlay
+  url: overlays/kairos-ar-openapi-overlay.yaml
 - type: Website
   url: https://kairos.com
 - type: DeveloperPortal
