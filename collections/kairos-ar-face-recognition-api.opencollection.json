@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kairos & Emotion Analysis Face Recognition API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "app_id",
+      "value": "{{app_id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Face Recognition",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Enroll a face into a gallery",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kairos.com/enroll",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Takes a photo, finds the faces within it, and stores the faces into a gallery under a subject identifier you choose. Submit the photo as a publicly accessible URL, Base64-encoded image, or file upload."
+        },
+        {
+          "info": {
+            "name": "Verify a face against an enrolled subject",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kairos.com/verify",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Takes a photo and compares it against a specific subject already enrolled in a gallery. Use the returned confidence value to decide whether the match is valid for your application."
+        },
+        {
+          "info": {
+            "name": "Recognize faces against a gallery",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kairos.com/recognize",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Takes a photo, finds the faces within it, and matches them against all subjects enrolled in a gallery, returning candidate matches above the matching threshold (default 60%)."
+        },
+        {
+          "info": {
+            "name": "Detect faces and facial features",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kairos.com/detect",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Takes a photo and returns the facial features it finds as coordinates, plus attributes such as age, gender and glasses. Coordinates begin at the top-left of the photo."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

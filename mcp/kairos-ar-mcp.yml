@@ -2,11 +2,9 @@ generated: '2026-07-19'
 method: derived
 status: candidate
 source: openapi/kairos-ar-openapi.yml
-notes: >-
-  No official hosted/remote Kairos MCP server was found (no entry in the MCP
-  registry, no @modelcontextprotocol package, nothing in the kairosinc GitHub
-  org). This is a candidate tool list derived one-to-one from the OpenAPI
-  operations to seed an MCP server.
+notes: No official hosted/remote Kairos MCP server was found (no entry in the MCP registry, no @modelcontextprotocol
+  package, nothing in the kairosinc GitHub org). This is a candidate tool list derived one-to-one from
+  the OpenAPI operations to seed an MCP server.
 server:
   name: kairos-ar
   transport: http
@@ -50,3 +48,9 @@ tools:
 - name: getAnalytics
   description: Get aggregated impressions for a media object.
   source_operation: openapi/kairos-ar-openapi.yml#getAnalytics
+deployment:
+  mode: none
+  verified: derived
+  tools: 13
+  checked: '2026-08-12'
+  source: catalog MCP census

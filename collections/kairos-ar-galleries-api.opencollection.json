@@ -1,0 +1,97 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kairos Face Recognition & Emotion Analysis Galleries API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "app_id",
+      "value": "{{app_id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Galleries",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all galleries",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kairos.com/gallery/list_all"
+          },
+          "docs": "Lists all of the galleries you have created. Requires no parameters."
+        },
+        {
+          "info": {
+            "name": "View subjects in a gallery",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kairos.com/gallery/view",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Lists all of the subjects you have enrolled in a gallery."
+        },
+        {
+          "info": {
+            "name": "View face templates for a subject",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kairos.com/gallery/view_subject",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Displays all face_ids and enrollment timestamps for each template enrolled from a given gallery_name and subject_id."
+        },
+        {
+          "info": {
+            "name": "Remove a gallery",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kairos.com/gallery/remove",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Removes a gallery and all of its enrolled subjects."
+        },
+        {
+          "info": {
+            "name": "Remove a subject or face template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kairos.com/gallery/remove_subject",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Removes a subject from a gallery. If a face_id is supplied only that individual enrolled template is removed. Once the last subject is removed the gallery is removed automatically."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,114 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Kairos Face Recognition & Emotion Analysis API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "app_id",
+      "value": "{{app_id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Emotion Analysis",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a media object for processing",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.kairos.com/v2/media",
+            "params": [
+              {
+                "name": "source",
+                "value": "",
+                "type": "query",
+                "description": "The source of the media. URL or file upload."
+              },
+              {
+                "name": "landmarks",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 to receive facial feature points in the response."
+              },
+              {
+                "name": "timeout",
+                "value": "",
+                "type": "query",
+                "description": "Seconds to wait for processing. Default 10, max 60."
+              }
+            ]
+          },
+          "docs": "Create a new media object (image or video) to be processed for emotion, demographics and attention. Provide the media via the source parameter."
+        },
+        {
+          "info": {
+            "name": "Get processed media results",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kairos.com/v2/media/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the media."
+              }
+            ]
+          },
+          "docs": "Returns the results of a specific uploaded piece of media."
+        },
+        {
+          "info": {
+            "name": "Delete media results",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.kairos.com/v2/media/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the media."
+              }
+            ]
+          },
+          "docs": "Deletes media results and returns the status of the operation."
+        },
+        {
+          "info": {
+            "name": "Get overall impressions for media",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.kairos.com/v2/analytics/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the media."
+              }
+            ]
+          },
+          "docs": "Returns the overall impressions from a specific uploaded piece of media."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,533 @@
+{
+  "item": [
+    {
+      "id": "57722ded-f646-4c02-8dbb-cc58733206a6",
+      "name": "Galleries",
+      "description": {
+        "content": "Manage galleries and the subjects/face templates enrolled in them.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "eb1fd561-7c51-4424-bca6-98459fddc87a",
+          "name": "List all galleries",
+          "request": {
+            "name": "List all galleries",
+            "description": {
+              "content": "Lists all of the galleries you have created. Requires no parameters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "gallery",
+                "list_all"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eab77260-5def-4a3b-845f-96a36cbbcb6f",
+              "name": "List of gallery ids.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gallery",
+                    "list_all"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "app_id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"gallery_ids\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0082c781-e516-4d2b-9e58-7a92199e49a9",
+          "name": "View subjects in a gallery",
+          "request": {
+            "name": "View subjects in a gallery",
+            "description": {
+              "content": "Lists all of the subjects you have enrolled in a gallery.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "gallery",
+                "view"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"gallery_name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8f14268b-e5c3-4025-a98c-2d3d5b982a08",
+              "name": "List of subject ids (or an error envelope).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gallery",
+                    "view"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "app_id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"gallery_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"subject_ids\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "908ffa82-749b-44c6-b345-65761d42807b",
+          "name": "View face templates for a subject",
+          "request": {
+            "name": "View face templates for a subject",
+            "description": {
+              "content": "Displays all face_ids and enrollment timestamps for each template enrolled from a given gallery_name and subject_id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "gallery",
+                "view_subject"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"gallery_name\": \"<string>\",\n  \"subject_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a4eff015-2c38-4e23-bb86-ea3d3b7a5781",
+              "name": "List of face templates (or an error envelope).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gallery",
+                    "view_subject"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "app_id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"gallery_name\": \"<string>\",\n  \"subject_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"face_ids\": [\n    {\n      \"face_id\": \"string\",\n      \"enrollment_timestamp\": \"string\"\n    },\n    {\n      \"face_id\": \"string\",\n      \"enrollment_timestamp\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1f03393c-6242-4b8f-8378-6bc98037be08",
+          "name": "Remove a gallery",
+          "request": {
+            "name": "Remove a gallery",
+            "description": {
+              "content": "Removes a gallery and all of its enrolled subjects.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "gallery",
+                "remove"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"gallery_name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b6bb25d3-7525-45f9-af23-ae5db8e1f750",
+              "name": "Removal status (or an error envelope).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gallery",
+                    "remove"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "app_id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"gallery_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "10b5e3a2-8280-4d45-888b-1e86bb04bdfe",
+          "name": "Remove a subject or face template",
+          "request": {
+            "name": "Remove a subject or face template",
+            "description": {
+              "content": "Removes a subject from a gallery. If a face_id is supplied only that individual enrolled template is removed. Once the last subject is removed the gallery is removed automatically.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "gallery",
+                "remove_subject"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"gallery_name\": \"<string>\",\n  \"subject_id\": \"<string>\",\n  \"face_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "223f6bf7-92d0-47df-a14e-70cc9e2c1507",
+              "name": "Removal status (or an error envelope).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gallery",
+                    "remove_subject"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "app_id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"gallery_name\": \"<string>\",\n  \"subject_id\": \"<string>\",\n  \"face_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.kairos.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "app_id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "41d3cb8a-37d4-433e-8cbd-7bb26666e3e5",
+    "name": "Kairos Face Recognition & Emotion Analysis Galleries API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Kairos is a human-analytics platform that integrates facial recognition, emotion, and demographic data into apps and services over a REST-style API. The Face Recognition group enrolls, verifies, recognizes and detects faces against galleries you create; the Emotion Analysis group processes media (images/video) and returns the six universal emotions, demographics and attention tracking. Requests and responses are JSON; every request is authenticated with an app_id + app_key header pair.\n\nContact Support:\n Name: Kairos Support\n Email: support@kairos.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,445 @@
+{
+  "item": [
+    {
+      "id": "4e46f673-5826-4234-8ffd-8ba8dcf5647f",
+      "name": "Face Recognition",
+      "description": {
+        "content": "Detect, enroll, verify and recognize faces in photos against galleries.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2a8b57ed-a73c-40c5-86ee-7c7ee54e4085",
+          "name": "Enroll a face into a gallery",
+          "request": {
+            "name": "Enroll a face into a gallery",
+            "description": {
+              "content": "Takes a photo, finds the faces within it, and stores the faces into a gallery under a subject identifier you choose. Submit the photo as a publicly accessible URL, Base64-encoded image, or file upload.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "enroll"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"image\": \"<string>\",\n  \"subject_id\": \"<string>\",\n  \"gallery_name\": \"<string>\",\n  \"minHeadScale\": 0.015,\n  \"multiple_faces\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "808e8f08-1bee-4e2d-a7a4-916c603174e7",
+              "name": "Face enrolled (or an error envelope with HTTP 200).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "enroll"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "app_id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"image\": \"<string>\",\n  \"subject_id\": \"<string>\",\n  \"gallery_name\": \"<string>\",\n  \"minHeadScale\": 0.015,\n  \"multiple_faces\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"face_id\": \"string\",\n  \"images\": [\n    {\n      \"attributes\": {\n        \"lips\": \"string\",\n        \"asian\": 9756.073818165192,\n        \"gender\": {\n          \"type\": \"string\"\n        },\n        \"age\": 1410,\n        \"hispanic\": 7498.050321850259,\n        \"other\": 3879.750811017387,\n        \"black\": 9754.204933918445,\n        \"white\": 6189.055975682578,\n        \"glasses\": \"string\"\n      },\n      \"transaction\": {\n        \"status\": \"string\",\n        \"topLeftX\": 791,\n        \"topLeftY\": 694,\n        \"gallery_name\": \"string\",\n        \"timestamp\": \"string\",\n        \"height\": 9978,\n        \"width\": 8686,\n        \"quality\": 6696.48102048883,\n        \"confidence\": 5986.91738734551,\n        \"subject_id\": \"string\",\n        \"face_id\": 6899\n      }\n    },\n    {\n      \"attributes\": {\n        \"lips\": \"string\",\n        \"asian\": 6503.612491215317,\n        \"gender\": {\n          \"type\": \"string\"\n        },\n        \"age\": 7444,\n        \"hispanic\": 1723.0165902437445,\n        \"other\": 6118.529141931248,\n        \"black\": 257.58608169786925,\n        \"white\": 8027.617161522266,\n        \"glasses\": \"string\"\n      },\n      \"transaction\": {\n        \"status\": \"string\",\n        \"topLeftX\": 8588,\n        \"topLeftY\": 2841,\n        \"gallery_name\": \"string\",\n        \"timestamp\": \"string\",\n        \"height\": 5636,\n        \"width\": 2964,\n        \"quality\": 9409.03695693936,\n        \"confidence\": 9780.392053222458,\n        \"subject_id\": \"string\",\n        \"face_id\": 4258\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "197d4463-6457-48f3-b681-05916bee18e6",
+          "name": "Verify a face against an enrolled subject",
+          "request": {
+            "name": "Verify a face against an enrolled subject",
+            "description": {
+              "content": "Takes a photo and compares it against a specific subject already enrolled in a gallery. Use the returned confidence value to decide whether the match is valid for your application.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "verify"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"image\": \"<string>\",\n  \"subject_id\": \"<string>\",\n  \"gallery_name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "66917415-0a9b-4ac5-aa81-14cc0750fc7b",
+              "name": "Verification result (or an error envelope with HTTP 200).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "app_id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"image\": \"<string>\",\n  \"subject_id\": \"<string>\",\n  \"gallery_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"images\": [\n    {\n      \"transaction\": {\n        \"status\": \"string\",\n        \"topLeftX\": 8653,\n        \"topLeftY\": 6249,\n        \"gallery_name\": \"string\",\n        \"timestamp\": \"string\",\n        \"height\": 6984,\n        \"width\": 1074,\n        \"quality\": 789.1382639737221,\n        \"confidence\": 873.9233685611358,\n        \"subject_id\": \"string\",\n        \"face_id\": 8145\n      },\n      \"candidates\": [\n        {\n          \"subject_id\": \"string\",\n          \"confidence\": 3700.9932343041705,\n          \"enrollment_timestamp\": \"string\"\n        },\n        {\n          \"subject_id\": \"string\",\n          \"confidence\": 58.83180682062839,\n          \"enrollment_timestamp\": \"string\"\n        }\n      ]\n    },\n    {\n      \"transaction\": {\n        \"status\": \"string\",\n        \"topLeftX\": 9571,\n        \"topLeftY\": 106,\n        \"gallery_name\": \"string\",\n        \"timestamp\": \"string\",\n        \"height\": 5657,\n        \"width\": 5520,\n        \"quality\": 5039.080059868221,\n        \"confidence\": 2169.6016324528077,\n        \"subject_id\": \"string\",\n        \"face_id\": 3021\n      },\n      \"candidates\": [\n        {\n          \"subject_id\": \"string\",\n          \"confidence\": 6610.67743352005,\n          \"enrollment_timestamp\": \"string\"\n        },\n        {\n          \"subject_id\": \"string\",\n          \"confidence\": 6221.378711373898,\n          \"enrollment_timestamp\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c0febd4a-d80a-4094-8fcb-5f884f532beb",
+          "name": "Recognize faces against a gallery",
+          "request": {
+            "name": "Recognize faces against a gallery",
+            "description": {
+              "content": "Takes a photo, finds the faces within it, and matches them against all subjects enrolled in a gallery, returning candidate matches above the matching threshold (default 60%).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "recognize"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"image\": \"<string>\",\n  \"gallery_name\": \"<string>\",\n  \"minHeadScale\": 0.015,\n  \"threshold\": 0.7,\n  \"max_num_results\": 10\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b57ea10b-75d7-4d2f-9e56-9577f690196f",
+              "name": "Recognition result with candidates (or an error envelope).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recognize"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "app_id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"image\": \"<string>\",\n  \"gallery_name\": \"<string>\",\n  \"minHeadScale\": 0.015,\n  \"threshold\": 0.7,\n  \"max_num_results\": 10\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"images\": [\n    {\n      \"transaction\": {\n        \"status\": \"string\",\n        \"topLeftX\": 4342,\n        \"topLeftY\": 8319,\n        \"gallery_name\": \"string\",\n        \"timestamp\": \"string\",\n        \"height\": 1264,\n        \"width\": 9058,\n        \"quality\": 6075.26853063988,\n        \"confidence\": 5646.502896186707,\n        \"subject_id\": \"string\",\n        \"face_id\": 1925\n      },\n      \"candidates\": [\n        {\n          \"subject_id\": \"string\",\n          \"confidence\": 2726.7816044287797,\n          \"enrollment_timestamp\": \"string\"\n        },\n        {\n          \"subject_id\": \"string\",\n          \"confidence\": 3999.273142036451,\n          \"enrollment_timestamp\": \"string\"\n        }\n      ]\n    },\n    {\n      \"transaction\": {\n        \"status\": \"string\",\n        \"topLeftX\": 7908,\n        \"topLeftY\": 5525,\n        \"gallery_name\": \"string\",\n        \"timestamp\": \"string\",\n        \"height\": 4650,\n        \"width\": 5265,\n        \"quality\": 9187.23569678697,\n        \"confidence\": 9408.194747553971,\n        \"subject_id\": \"string\",\n        \"face_id\": 8763\n      },\n      \"candidates\": [\n        {\n          \"subject_id\": \"string\",\n          \"confidence\": 8943.55712029284,\n          \"enrollment_timestamp\": \"string\"\n        },\n        {\n          \"subject_id\": \"string\",\n          \"confidence\": 6747.894415340005,\n          \"enrollment_timestamp\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0b843731-49b4-4941-84e7-1109cc9280e4",
+          "name": "Detect faces and facial features",
+          "request": {
+            "name": "Detect faces and facial features",
+            "description": {
+              "content": "Takes a photo and returns the facial features it finds as coordinates, plus attributes such as age, gender and glasses. Coordinates begin at the top-left of the photo.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "detect"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"image\": \"<string>\",\n  \"minHeadScale\": 0.015,\n  \"selector\": \"FRONTAL\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "81f48357-652b-41a0-b324-2ceb54556f52",
+              "name": "Detection result (or an error envelope with HTTP 200).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "detect"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "app_id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"image\": \"<string>\",\n  \"minHeadScale\": 0.015,\n  \"selector\": \"FRONTAL\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"images\": [\n    {\n      \"status\": \"string\",\n      \"width\": 350,\n      \"height\": 7837,\n      \"file\": \"string\",\n      \"faces\": [\n        {\n          \"topLeftX\": 8497,\n          \"topLeftY\": 1466,\n          \"chinTipX\": 337,\n          \"chinTipY\": 3239,\n          \"rightEyeCenterX\": 9399,\n          \"rightEyeCenterY\": 5739,\n          \"leftEyeCenterX\": 2267,\n          \"leftEyeCenterY\": 4802,\n          \"yaw\": 5811,\n          \"pitch\": 7632,\n          \"roll\": 6839,\n          \"confidence\": 2425.2177403394303,\n          \"height\": 5685,\n          \"width\": 8787,\n          \"quality\": 7995.091013369374,\n          \"face_id\": 8691,\n          \"attributes\": {\n            \"lips\": \"string\",\n            \"asian\": 7719.805237461071,\n            \"gender\": {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"age\": 5398,\n            \"hispanic\": 1581.0530448806148,\n            \"other\": 166.19085053590555,\n            \"black\": 5460.193478412157,\n            \"white\": 4552.933789307652,\n            \"glasses\": \"string\"\n          }\n        },\n        {\n          \"topLeftX\": 2341,\n          \"topLeftY\": 4470,\n          \"chinTipX\": 1098,\n          \"chinTipY\": 1421,\n          \"rightEyeCenterX\": 7964,\n          \"rightEyeCenterY\": 135,\n          \"leftEyeCenterX\": 2127,\n          \"leftEyeCenterY\": 3346,\n          \"yaw\": 854,\n          \"pitch\": 7514,\n          \"roll\": 8559,\n          \"confidence\": 2883.225362078693,\n          \"height\": 92,\n          \"width\": 7161,\n          \"quality\": 471.5564479846057,\n          \"face_id\": 2325,\n          \"attributes\": {\n            \"lips\": \"string\",\n            \"asian\": 308.80462338193195,\n            \"gender\": {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"age\": 2376,\n            \"hispanic\": 3509.6357490686114,\n            \"other\": 1560.9525159855364,\n            \"black\": 1627.8523679182854,\n            \"white\": 342.17260042548105,\n            \"glasses\": \"string\"\n          }\n        }\n      ]\n    },\n    {\n      \"status\": \"string\",\n      \"width\": 9738,\n      \"height\": 4426,\n      \"file\": \"string\",\n      \"faces\": [\n        {\n          \"topLeftX\": 5571,\n          \"topLeftY\": 9910,\n          \"chinTipX\": 9212,\n          \"chinTipY\": 5581,\n          \"rightEyeCenterX\": 8603,\n          \"rightEyeCenterY\": 525,\n          \"leftEyeCenterX\": 1825,\n          \"leftEyeCenterY\": 5939,\n          \"yaw\": 5089,\n          \"pitch\": 9621,\n          \"roll\": 3623,\n          \"confidence\": 4337.805854034607,\n          \"height\": 5225,\n          \"width\": 2853,\n          \"quality\": 3270.5229456528928,\n          \"face_id\": 5173,\n          \"attributes\": {\n            \"lips\": \"string\",\n            \"asian\": 1802.412356445894,\n            \"gender\": {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"age\": 4188,\n            \"hispanic\": 8626.293749794795,\n            \"other\": 5025.444654087671,\n            \"black\": 3776.305364831901,\n            \"white\": 725.5532500310635,\n            \"glasses\": \"string\"\n          }\n        },\n        {\n          \"topLeftX\": 3145,\n          \"topLeftY\": 8190,\n          \"chinTipX\": 9072,\n          \"chinTipY\": 4232,\n          \"rightEyeCenterX\": 6450,\n          \"rightEyeCenterY\": 251,\n          \"leftEyeCenterX\": 215,\n          \"leftEyeCenterY\": 2051,\n          \"yaw\": 9931,\n          \"pitch\": 7387,\n          \"roll\": 8529,\n          \"confidence\": 4211.9592116824415,\n          \"height\": 365,\n          \"width\": 2001,\n          \"quality\": 1408.995358429519,\n          \"face_id\": 3631,\n          \"attributes\": {\n            \"lips\": \"string\",\n            \"asian\": 6738.653738635046,\n            \"gender\": {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"age\": 2242,\n            \"hispanic\": 7200.700125606664,\n            \"other\": 7546.916533968923,\n            \"black\": 4921.603302639596,\n            \"white\": 291.5862652233203,\n            \"glasses\": \"string\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.kairos.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "app_id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "aa94d65f-9443-4a0e-909c-8b438c973460",
+    "name": "Kairos & Emotion Analysis Face Recognition API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Kairos is a human-analytics platform that integrates facial recognition, emotion, and demographic data into apps and services over a REST-style API. The Face Recognition group enrolls, verifies, recognizes and detects faces against galleries you create; the Emotion Analysis group processes media (images/video) and returns the six universal emotions, demographics and attention tracking. Requests and responses are JSON; every request is authenticated with an app_id + app_key header pair.\n\nContact Support:\n Name: Kairos Support\n Email: support@kairos.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,512 @@
+{
+  "item": [
+    {
+      "id": "c0cb8a35-6610-4915-a515-ecad96637e80",
+      "name": "Emotion Analysis",
+      "description": {
+        "content": "Analyze emotion, demographics and attention in images and video.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "aadc97d1-7851-4249-b110-1f0902bc2869",
+          "name": "Create a media object for processing",
+          "request": {
+            "name": "Create a media object for processing",
+            "description": {
+              "content": "Create a new media object (image or video) to be processed for emotion, demographics and attention. Provide the media via the source parameter.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "media"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "source",
+                  "value": "<string>",
+                  "description": "(Required) The source of the media. URL or file upload."
+                },
+                {
+                  "disabled": false,
+                  "key": "landmarks",
+                  "value": "0",
+                  "description": "Set to 1 to receive facial feature points in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "timeout",
+                  "value": "10",
+                  "description": "Seconds to wait for processing. Default 10, max 60."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "564cd1c9-5d87-43a9-81da-f7fda18dd5d0",
+              "name": "Media processed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "media"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "source",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "landmarks",
+                      "value": "0"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "app_id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"length\": 2235,\n  \"status_code\": 8114,\n  \"status_message\": \"string\",\n  \"media_info\": {\n    \"file\": \"string\",\n    \"length\": 65,\n    \"mime_type\": \"string\",\n    \"type\": \"string\"\n  },\n  \"frames\": [\n    {\n      \"time\": 8093\n    },\n    {\n      \"time\": 5102\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "003336de-6eb4-44f1-bc78-79709aa205e3",
+              "name": "Media accepted and still processing.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "media"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "source",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "landmarks",
+                      "value": "0"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "app_id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status_code\": 2563,\n  \"id\": \"string\",\n  \"status_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bccfa58e-4859-454c-989e-1eb44924e47d",
+          "name": "Get processed media results",
+          "request": {
+            "name": "Get processed media results",
+            "description": {
+              "content": "Returns the results of a specific uploaded piece of media.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "media",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The id of the media."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e5cfbf4e-2a48-4c02-8faa-eb28af3cb615",
+              "name": "Media results (or a media-not-found status object).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "media",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the media."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "app_id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"length\": 3014,\n  \"status_code\": 9861,\n  \"status_message\": \"string\",\n  \"media_info\": {\n    \"file\": \"string\",\n    \"length\": 8883,\n    \"mime_type\": \"string\",\n    \"type\": \"string\"\n  },\n  \"frames\": [\n    {\n      \"time\": 6513\n    },\n    {\n      \"time\": 7864\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ae5f8928-4e88-460d-8e50-24b7bebcc99c",
+          "name": "Delete media results",
+          "request": {
+            "name": "Delete media results",
+            "description": {
+              "content": "Deletes media results and returns the status of the operation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "media",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The id of the media."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3e161c97-c7de-4e4f-9472-14172275f2fe",
+              "name": "Deletion status.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "media",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the media."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "app_id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"status_code\": \"string\",\n  \"status_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ce069761-e4ed-426a-9c04-af7db18f03e8",
+          "name": "Get overall impressions for media",
+          "request": {
+            "name": "Get overall impressions for media",
+            "description": {
+              "content": "Returns the overall impressions from a specific uploaded piece of media.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "analytics",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The id of the media."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aa4a9bbc-b970-4ae7-ad52-75c5a355537d",
+              "name": "Aggregated impressions for the media (or a not-found status).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "analytics",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the media."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "app_id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"impressions\": [\n    {\n      \"appearance\": {},\n      \"average_emotion\": {},\n      \"demographics\": {},\n      \"duration\": 3605,\n      \"emotion_score\": {},\n      \"id\": \"string\",\n      \"tracking\": {}\n    },\n    {\n      \"appearance\": {},\n      \"average_emotion\": {},\n      \"demographics\": {},\n      \"duration\": 3211,\n      \"emotion_score\": {},\n      \"id\": \"string\",\n      \"tracking\": {}\n    }\n  ],\n  \"media_info\": {\n    \"filename\": \"string\",\n    \"length\": 9330,\n    \"mime_type\": \"string\",\n    \"type\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.kairos.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "app_id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ce8ded93-c589-4f1a-80a4-91e5ae7feb70",
+    "name": "Kairos Face Recognition & Emotion Analysis API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Kairos is a human-analytics platform that integrates facial recognition, emotion, and demographic data into apps and services over a REST-style API. The Face Recognition group enrolls, verifies, recognizes and detects faces against galleries you create; the Emotion Analysis group processes media (images/video) and returns the six universal emotions, demographics and attention tracking. Requests and responses are JSON; every request is authenticated with an app_id + app_key header pair.\n\nContact Support:\n Name: Kairos Support\n Email: support@kairos.com",
+      "type": "text/plain"
+    }
+  }
+}
