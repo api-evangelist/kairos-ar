@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Kairos Face Recognition & Emotion Analysis API
+  title: Kairos Face Recognition Emotion Analysis API
   version: '2.0'
   description: Kairos is a human-analytics platform that integrates facial recognition, emotion, and demographic data into apps and services over a REST-style API. The Face Recognition group enrolls, verifies, recognizes and detects faces against galleries you create; the Emotion Analysis group processes media (images/video) and returns the six universal emotions, demographics and attention tracking. Requests and responses are JSON; every request is authenticated with an app_id + app_key header pair.
   contact:
@@ -125,39 +125,24 @@ paths:
                 $ref: '#/components/schemas/Analytics'
 components:
   schemas:
-    MediaResult:
+    MediaStatus:
       type: object
       properties:
         id:
           type: string
-        length:
-          type: integer
         status_code:
-          type: integer
+          type: string
         status_message:
           type: string
-        media_info:
-          type: object
-          properties:
-            file:
-              type: string
-            length:
-              type: integer
-            mime_type:
-              type: string
-            type:
-              type: string
-        frames:
-          type: array
-          items:
-            type: object
-            properties:
-              time:
-                type: integer
-              people:
-                type: array
-                items:
-                  type: object
+    MediaProcessing:
+      type: object
+      properties:
+        status_code:
+          type: integer
+        id:
+          type: string
+        status_message:
+          type: string
     Analytics:
       type: object
       properties:
@@ -193,24 +178,39 @@ components:
               type: string
             type:
               type: string
-    MediaProcessing:
+    MediaResult:
       type: object
       properties:
+        id:
+          type: string
+        length:
+          type: integer
         status_code:
           type: integer
-        id:
-          type: string
         status_message:
           type: string
-    MediaStatus:
-      type: object
-      properties:
-        id:
-          type: string
-        status_code:
-          type: string
-        status_message:
-          type: string
+        media_info:
+          type: object
+          properties:
+            file:
+              type: string
+            length:
+              type: integer
+            mime_type:
+              type: string
+            type:
+              type: string
+        frames:
+          type: array
+          items:
+            type: object
+            properties:
+              time:
+                type: integer
+              people:
+                type: array
+                items:
+                  type: object
   securitySchemes:
     app_id:
       type: apiKey
