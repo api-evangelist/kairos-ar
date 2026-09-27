@@ -122,6 +122,33 @@ components:
           type: string
         gallery_name:
           type: string
+    Transaction:
+      type: object
+      properties:
+        status:
+          type: string
+        topLeftX:
+          type: integer
+        topLeftY:
+          type: integer
+        gallery_name:
+          type: string
+        timestamp:
+          type: string
+        height:
+          type: integer
+        width:
+          type: integer
+        quality:
+          type: number
+          format: float
+        confidence:
+          type: number
+          format: float
+        subject_id:
+          type: string
+        face_id:
+          type: integer
     FaceAttributes:
       type: object
       properties:
@@ -151,6 +178,39 @@ components:
           format: float
         glasses:
           type: string
+    Candidate:
+      type: object
+      properties:
+        subject_id:
+          type: string
+        confidence:
+          type: number
+          format: float
+        enrollment_timestamp:
+          type: string
+    RecognizeRequest:
+      type: object
+      required:
+      - image
+      - gallery_name
+      properties:
+        image:
+          type: string
+        gallery_name:
+          type: string
+        minHeadScale:
+          type: number
+          format: float
+          default: 0.015
+        threshold:
+          type: number
+          format: float
+          default: 0.7
+          description: Similarity threshold for a valid match (0 to 1).
+        max_num_results:
+          type: integer
+          default: 10
+          description: Maximum number of candidate matches returned.
     EnrollRequest:
       type: object
       required:
@@ -176,6 +236,35 @@ components:
           type: boolean
           default: false
           description: Enroll every detected face under the same subject_id.
+    RecognitionResult:
+      type: object
+      properties:
+        images:
+          type: array
+          items:
+            type: object
+            properties:
+              transaction:
+                $ref: '#/components/schemas/Transaction'
+              candidates:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Candidate'
+    ErrorEnvelope:
+      type: object
+      description: Kairos error envelope, returned (typically with HTTP 200) on failure.
+      properties:
+        Errors:
+          type: array
+          items:
+            type: object
+            properties:
+              Message:
+                type: string
+                example: no faces found in the image
+              ErrCode:
+                type: integer
+                example: 5002
     DetectResult:
       type: object
       properties:
@@ -233,59 +322,6 @@ components:
                       type: integer
                     attributes:
                       $ref: '#/components/schemas/FaceAttributes'
-    RecognitionResult:
-      type: object
-      properties:
-        images:
-          type: array
-          items:
-            type: object
-            properties:
-              transaction:
-                $ref: '#/components/schemas/Transaction'
-              candidates:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Candidate'
-    ErrorEnvelope:
-      type: object
-      description: Kairos error envelope, returned (typically with HTTP 200) on failure.
-      properties:
-        Errors:
-          type: array
-          items:
-            type: object
-            properties:
-              Message:
-                type: string
-                example: no faces found in the image
-              ErrCode:
-                type: integer
-                example: 5002
-    EnrollResult:
-      type: object
-      properties:
-        face_id:
-          type: string
-        images:
-          type: array
-          items:
-            type: object
-            properties:
-              attributes:
-                $ref: '#/components/schemas/FaceAttributes'
-              transaction:
-                $ref: '#/components/schemas/Transaction'
-    Candidate:
-      type: object
-      properties:
-        subject_id:
-          type: string
-        confidence:
-          type: number
-          format: float
-        enrollment_timestamp:
-          type: string
     DetectRequest:
       type: object
       required:
@@ -306,56 +342,20 @@ components:
           - PARTIAL
           - ROLL
           description: Face detector orientation profile.
-    Transaction:
+    EnrollResult:
       type: object
       properties:
-        status:
-          type: string
-        topLeftX:
-          type: integer
-        topLeftY:
-          type: integer
-        gallery_name:
-          type: string
-        timestamp:
-          type: string
-        height:
-          type: integer
-        width:
-          type: integer
-        quality:
-          type: number
-          format: float
-        confidence:
-          type: number
-          format: float
-        subject_id:
-          type: string
         face_id:
-          type: integer
-    RecognizeRequest:
-      type: object
-      required:
-      - image
-      - gallery_name
-      properties:
-        image:
           type: string
-        gallery_name:
-          type: string
-        minHeadScale:
-          type: number
-          format: float
-          default: 0.015
-        threshold:
-          type: number
-          format: float
-          default: 0.7
-          description: Similarity threshold for a valid match (0 to 1).
-        max_num_results:
-          type: integer
-          default: 10
-          description: Maximum number of candidate matches returned.
+        images:
+          type: array
+          items:
+            type: object
+            properties:
+              attributes:
+                $ref: '#/components/schemas/FaceAttributes'
+              transaction:
+                $ref: '#/components/schemas/Transaction'
   securitySchemes:
     app_id:
       type: apiKey

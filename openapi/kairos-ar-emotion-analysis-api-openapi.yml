@@ -134,15 +134,39 @@ components:
           type: string
         status_message:
           type: string
-    MediaProcessing:
+    MediaResult:
       type: object
       properties:
-        status_code:
-          type: integer
         id:
           type: string
+        length:
+          type: integer
+        status_code:
+          type: integer
         status_message:
           type: string
+        media_info:
+          type: object
+          properties:
+            file:
+              type: string
+            length:
+              type: integer
+            mime_type:
+              type: string
+            type:
+              type: string
+        frames:
+          type: array
+          items:
+            type: object
+            properties:
+              time:
+                type: integer
+              people:
+                type: array
+                items:
+                  type: object
     Analytics:
       type: object
       properties:
@@ -178,39 +202,15 @@ components:
               type: string
             type:
               type: string
-    MediaResult:
+    MediaProcessing:
       type: object
       properties:
-        id:
-          type: string
-        length:
-          type: integer
         status_code:
           type: integer
+        id:
+          type: string
         status_message:
           type: string
-        media_info:
-          type: object
-          properties:
-            file:
-              type: string
-            length:
-              type: integer
-            mime_type:
-              type: string
-            type:
-              type: string
-        frames:
-          type: array
-          items:
-            type: object
-            properties:
-              time:
-                type: integer
-              people:
-                type: array
-                items:
-                  type: object
   securitySchemes:
     app_id:
       type: apiKey

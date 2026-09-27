@@ -56,10 +56,10 @@ tags:
 - Facial Recognition
 - Biometrics
 - Emotion Analysis
-- Computer-Vision
+- Computer Vision
 - Identity
 - Artificial Intelligence
-- Machine-Learning
+- Machine Learning
 - Image Analysis
 tags_raw:
 - Company
@@ -72,6 +72,8 @@ tags_raw:
 - Artificial Intelligence
 - Machine Learning
 - Image Analysis
+- Computer-Vision
+- Machine-Learning
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

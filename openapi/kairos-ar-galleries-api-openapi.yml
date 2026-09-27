@@ -123,6 +123,29 @@ paths:
                 - $ref: '#/components/schemas/ErrorEnvelope'
 components:
   schemas:
+    RemoveSubjectRequest:
+      type: object
+      required:
+      - gallery_name
+      - subject_id
+      properties:
+        gallery_name:
+          type: string
+        subject_id:
+          type: string
+        face_id:
+          type: string
+          description: Optional. Remove only the individual template matching this face_id.
+    SubjectRequest:
+      type: object
+      required:
+      - gallery_name
+      - subject_id
+      properties:
+        gallery_name:
+          type: string
+        subject_id:
+          type: string
     StatusMessage:
       type: object
       properties:
@@ -159,28 +182,6 @@ components:
               ErrCode:
                 type: integer
                 example: 5002
-    SubjectList:
-      type: object
-      properties:
-        status:
-          type: string
-        subject_ids:
-          type: array
-          items:
-            type: string
-    RemoveSubjectRequest:
-      type: object
-      required:
-      - gallery_name
-      - subject_id
-      properties:
-        gallery_name:
-          type: string
-        subject_id:
-          type: string
-        face_id:
-          type: string
-          description: Optional. Remove only the individual template matching this face_id.
     GalleryNameRequest:
       type: object
       required:
@@ -188,22 +189,21 @@ components:
       properties:
         gallery_name:
           type: string
-    SubjectRequest:
-      type: object
-      required:
-      - gallery_name
-      - subject_id
-      properties:
-        gallery_name:
-          type: string
-        subject_id:
-          type: string
     GalleryList:
       type: object
       properties:
         status:
           type: string
         gallery_ids:
+          type: array
+          items:
+            type: string
+    SubjectList:
+      type: object
+      properties:
+        status:
+          type: string
+        subject_ids:
           type: array
           items:
             type: string
