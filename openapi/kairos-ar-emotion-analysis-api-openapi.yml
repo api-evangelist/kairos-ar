@@ -125,15 +125,6 @@ paths:
                 $ref: '#/components/schemas/Analytics'
 components:
   schemas:
-    MediaStatus:
-      type: object
-      properties:
-        id:
-          type: string
-        status_code:
-          type: string
-        status_message:
-          type: string
     MediaResult:
       type: object
       properties:
@@ -167,6 +158,24 @@ components:
                 type: array
                 items:
                   type: object
+    MediaProcessing:
+      type: object
+      properties:
+        status_code:
+          type: integer
+        id:
+          type: string
+        status_message:
+          type: string
+    MediaStatus:
+      type: object
+      properties:
+        id:
+          type: string
+        status_code:
+          type: string
+        status_message:
+          type: string
     Analytics:
       type: object
       properties:
@@ -202,15 +211,6 @@ components:
               type: string
             type:
               type: string
-    MediaProcessing:
-      type: object
-      properties:
-        status_code:
-          type: integer
-        id:
-          type: string
-        status_message:
-          type: string
   securitySchemes:
     app_id:
       type: apiKey
