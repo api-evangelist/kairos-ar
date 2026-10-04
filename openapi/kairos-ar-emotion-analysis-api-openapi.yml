@@ -125,6 +125,50 @@ paths:
                 $ref: '#/components/schemas/Analytics'
 components:
   schemas:
+    Analytics:
+      type: object
+      properties:
+        id:
+          type: string
+        impressions:
+          type: array
+          items:
+            type: object
+            properties:
+              appearance:
+                type: object
+              average_emotion:
+                type: object
+              demographics:
+                type: object
+              duration:
+                type: integer
+              emotion_score:
+                type: object
+              id:
+                type: string
+              tracking:
+                type: object
+        media_info:
+          type: object
+          properties:
+            filename:
+              type: string
+            length:
+              type: integer
+            mime_type:
+              type: string
+            type:
+              type: string
+    MediaStatus:
+      type: object
+      properties:
+        id:
+          type: string
+        status_code:
+          type: string
+        status_message:
+          type: string
     MediaResult:
       type: object
       properties:
@@ -167,50 +211,6 @@ components:
           type: string
         status_message:
           type: string
-    MediaStatus:
-      type: object
-      properties:
-        id:
-          type: string
-        status_code:
-          type: string
-        status_message:
-          type: string
-    Analytics:
-      type: object
-      properties:
-        id:
-          type: string
-        impressions:
-          type: array
-          items:
-            type: object
-            properties:
-              appearance:
-                type: object
-              average_emotion:
-                type: object
-              demographics:
-                type: object
-              duration:
-                type: integer
-              emotion_score:
-                type: object
-              id:
-                type: string
-              tracking:
-                type: object
-        media_info:
-          type: object
-          properties:
-            filename:
-              type: string
-            length:
-              type: integer
-            mime_type:
-              type: string
-            type:
-              type: string
   securitySchemes:
     app_id:
       type: apiKey

@@ -123,6 +123,57 @@ paths:
                 - $ref: '#/components/schemas/ErrorEnvelope'
 components:
   schemas:
+    GalleryNameRequest:
+      type: object
+      required:
+      - gallery_name
+      properties:
+        gallery_name:
+          type: string
+    ErrorEnvelope:
+      type: object
+      description: Kairos error envelope, returned (typically with HTTP 200) on failure.
+      properties:
+        Errors:
+          type: array
+          items:
+            type: object
+            properties:
+              Message:
+                type: string
+                example: no faces found in the image
+              ErrCode:
+                type: integer
+                example: 5002
+    RemoveSubjectRequest:
+      type: object
+      required:
+      - gallery_name
+      - subject_id
+      properties:
+        gallery_name:
+          type: string
+        subject_id:
+          type: string
+        face_id:
+          type: string
+          description: Optional. Remove only the individual template matching this face_id.
+    GalleryList:
+      type: object
+      properties:
+        status:
+          type: string
+        gallery_ids:
+          type: array
+          items:
+            type: string
+    StatusMessage:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string
     SubjectList:
       type: object
       properties:
@@ -142,43 +193,6 @@ components:
           type: string
         subject_id:
           type: string
-    GalleryList:
-      type: object
-      properties:
-        status:
-          type: string
-        gallery_ids:
-          type: array
-          items:
-            type: string
-    RemoveSubjectRequest:
-      type: object
-      required:
-      - gallery_name
-      - subject_id
-      properties:
-        gallery_name:
-          type: string
-        subject_id:
-          type: string
-        face_id:
-          type: string
-          description: Optional. Remove only the individual template matching this face_id.
-    ErrorEnvelope:
-      type: object
-      description: Kairos error envelope, returned (typically with HTTP 200) on failure.
-      properties:
-        Errors:
-          type: array
-          items:
-            type: object
-            properties:
-              Message:
-                type: string
-                example: no faces found in the image
-              ErrCode:
-                type: integer
-                example: 5002
     FaceTemplateList:
       type: object
       properties:
@@ -193,20 +207,6 @@ components:
                 type: string
               enrollment_timestamp:
                 type: string
-    GalleryNameRequest:
-      type: object
-      required:
-      - gallery_name
-      properties:
-        gallery_name:
-          type: string
-    StatusMessage:
-      type: object
-      properties:
-        status:
-          type: string
-        message:
-          type: string
   securitySchemes:
     app_id:
       type: apiKey
