@@ -153,6 +153,8 @@ apis:
   - type: AgenticAccess
     url: agentic-access/kairos-ar-agentic-access.yml
 common:
+- type: Plans
+  url: plans/kairos-ar-plans-pricing.yml
 - type: Overlay
   url: overlays/kairos-ar-openapi-overlay.yaml
 - type: Website
