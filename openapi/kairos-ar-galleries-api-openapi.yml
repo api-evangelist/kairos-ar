@@ -123,12 +123,65 @@ paths:
                 - $ref: '#/components/schemas/ErrorEnvelope'
 components:
   schemas:
+    SubjectList:
+      type: object
+      properties:
+        status:
+          type: string
+        subject_ids:
+          type: array
+          items:
+            type: string
     GalleryNameRequest:
       type: object
       required:
       - gallery_name
       properties:
         gallery_name:
+          type: string
+    FaceTemplateList:
+      type: object
+      properties:
+        status:
+          type: string
+        face_ids:
+          type: array
+          items:
+            type: object
+            properties:
+              face_id:
+                type: string
+              enrollment_timestamp:
+                type: string
+    StatusMessage:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+    RemoveSubjectRequest:
+      type: object
+      required:
+      - gallery_name
+      - subject_id
+      properties:
+        gallery_name:
+          type: string
+        subject_id:
+          type: string
+        face_id:
+          type: string
+          description: Optional. Remove only the individual template matching this face_id.
+    SubjectRequest:
+      type: object
+      required:
+      - gallery_name
+      - subject_id
+      properties:
+        gallery_name:
+          type: string
+        subject_id:
           type: string
     ErrorEnvelope:
       type: object
@@ -145,19 +198,6 @@ components:
               ErrCode:
                 type: integer
                 example: 5002
-    RemoveSubjectRequest:
-      type: object
-      required:
-      - gallery_name
-      - subject_id
-      properties:
-        gallery_name:
-          type: string
-        subject_id:
-          type: string
-        face_id:
-          type: string
-          description: Optional. Remove only the individual template matching this face_id.
     GalleryList:
       type: object
       properties:
@@ -167,46 +207,6 @@ components:
           type: array
           items:
             type: string
-    StatusMessage:
-      type: object
-      properties:
-        status:
-          type: string
-        message:
-          type: string
-    SubjectList:
-      type: object
-      properties:
-        status:
-          type: string
-        subject_ids:
-          type: array
-          items:
-            type: string
-    SubjectRequest:
-      type: object
-      required:
-      - gallery_name
-      - subject_id
-      properties:
-        gallery_name:
-          type: string
-        subject_id:
-          type: string
-    FaceTemplateList:
-      type: object
-      properties:
-        status:
-          type: string
-        face_ids:
-          type: array
-          items:
-            type: object
-            properties:
-              face_id:
-                type: string
-              enrollment_timestamp:
-                type: string
   securitySchemes:
     app_id:
       type: apiKey
