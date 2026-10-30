@@ -64,6 +64,132 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Kairos AR is a company surfaced as a portfolio company of 500-global and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+Kairos AR, Inc. is a Miami-based human-analytics company providing face recognition, facial detection, and emotion analysis as a REST API. The platform lets developers enroll, verify, and recognize faces against galleries they create, detect faces and facial features (age, gender, ethnicity, glasses, landmarks) in photos, and analyze emotion, demographics and attention across images and video. Requests and responses are JSON and every call is authenticated with an app_id + app_key header pair. Kairos ships official SDKs for JavaScript, PHP, Android, and .NET, publishes an Apiary-hosted API reference with a live sandbox console, and offers a free tier plus usage-based pricing and an on-premise biometric offering. The company was surfaced as a 500 Global portfolio company and is enriched here into the API Evangelist network.
 
-Backed by: 500-global — https://kairos.com
+**Areas:** Company · Face Recognition · Facial Recognition · Biometrics · Emotion Analysis · Computer Vision · Identity · Artificial Intelligence · Machine Learning · Image Analysis
+
+## Kairos AR on APIs.io
+
+Everything profiled for Kairos AR is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/kairos-ar/](https://apis.io/providers/kairos-ar/)** — or go straight to one of the APIs or properties below.
+
+### APIs (3)
+
+- [Kairos AR Emotion Analysis API](https://apis.io/apis/kairos-ar/kairos-ar-emotion-analysis-api/) — Analyze emotion, demographics and attention in images and video.
+- [Kairos AR Face Recognition API](https://apis.io/apis/kairos-ar/kairos-ar-face-recognition-api/) — Detect, enroll, verify and recognize faces in photos against galleries.
+- [Kairos AR Galleries API](https://apis.io/apis/kairos-ar/kairos-ar-galleries-api/) — Manage galleries and the subjects/face templates enrolled in them.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [kairos-ar](https://apis.io/servers/kairos-ar/kairos-ar/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Kairos Ar Agentic Access](https://apis.io/agentic-access/kairos-ar/kairos-ar-agentic-access/)
+
+#### Collections (3)
+
+Postman and Open Collection request collections.
+
+- [Kairos Face Recognition & Emotion Analysis API](https://apis.io/collections/kairos-ar/open-kairos-ar-emotion-analysis-api/)
+- [Kairos & Emotion Analysis Face Recognition API](https://apis.io/collections/kairos-ar/open-kairos-ar-face-recognition-api/)
+- [Kairos Face Recognition & Emotion Analysis Galleries API](https://apis.io/collections/kairos-ar/open-kairos-ar-galleries-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Kairos Ar Openapi Overlay](https://apis.io/overlays/kairos-ar/kairos-ar-openapi-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Kairos Ar Authentication](https://apis.io/security/kairos-ar/kairos-ar-authentication/)
+- [Kairos Ar Domain Security](https://apis.io/security/kairos-ar/kairos-ar-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Kairos Ar Plans Pricing](https://apis.io/plans/kairos-ar/kairos-ar-plans-pricing/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://kairos.com)
+- [Documentation](https://face.kairos.com/docs/)
+- [Getting started](https://face.kairos.com/docs/getting-started-with-kairos-face-recognition)
+- [API reference](https://face.kairos.com/docs/api/)
+- [Pricing](https://www.kairos.com/pricing)
+- [Sign up](https://developer.kairos.com/signup)
+- [Support](https://www.kairos.com/support)
+- [Changelog](https://face.kairos.com/docs/api/changelog)
+- [Blog](https://www.kairos.com/blog)
+- [Terms of service](https://www.kairos.com/terms)
+- [Privacy policy](https://www.kairos.com/privacy)
+- [GitHub](https://github.com/kairosinc)
+- [Status](https://status.kairos.com/)
+
+## API Evangelist rating
+
+**Kin Score 43.4** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 13.6 |
+| Contract governance | 4.5 |
+| Operational transparency | 18.4 |
+| Developer ergonomics | 73.2 |
+| Access clarity | 76.3 |
+
+**Agent readiness 22.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 21.9** — AI & Biometrics
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/kairos-ar/](https://apis.io/providers/kairos-ar/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Kairos AR: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/kairos-ar/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
